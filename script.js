@@ -3,10 +3,21 @@
 // in the html.
 
 $(document).ready(() => {
-var currentHour = dayjs().format(`H`)
-console.log(`Current Hour:`, currentHour)
+  var currentHour = dayjs().format('H');
 
+  $('.time-block').each(function() {
+    var hour = parseInt($(this).attr('id').split('-')[1]);
+
+    if (hour < currentHour) {
+      $(this).addClass('past');
+    } else if (hour == currentHour) {
+      $(this).addClass('present');
+    } else {
+      $(this).addClass('future');
+    }
+  });
 });
+
 
 
 $(() => {
